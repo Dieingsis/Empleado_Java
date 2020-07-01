@@ -22,6 +22,9 @@ public class uso_Empleado {
 	
 	System.out.println(jefa_finanzas.tomar_decisiones("Dar mas días de vacaciones a los empleados"));
 	
+	System.out.println("La jefa "+jefa_finanzas.dameNombre()+"tiene un bonus de " + jefa_finanzas.establece_bonus(500));
+	
+	System.out.println(misEmpleados[3].dameNombre() + " tiene un bonus de "+ misEmpleados[3].establece_bonus(200));
 	/* Esto lo puse a prueba para crear mis propias clases. Empleado director_comercial=new Jefatura("Sandra", 85000, 2012, 05, 05);
 	
 	
@@ -50,7 +53,7 @@ public class uso_Empleado {
 	}
 }
 
-class Empleado implements Comparable{
+class Empleado implements Comparable, Trabajadores{
 	
 	public Empleado(String nom, double sue, int año, int mes, int dia) {
 		
@@ -68,6 +71,10 @@ class Empleado implements Comparable{
 	  Id=IdSiguiente;
 	
 	
+	}
+	
+	public double establece_bonus(double gratificacion) {
+		return Trabajadores.bonus_base + gratificacion;
 	}
 	
 	public Empleado(String nom) {
@@ -132,6 +139,12 @@ class Jefatura extends Empleado implements Jefes{
 	
 	public String tomar_decisiones(String decision) {
 		return "Un miembro de la dirección ha tomado la decisión de: " + decision;
+	}
+	
+	public double establece_bonus(double gratificacion) {
+		
+		double prima=2000;
+		return Trabajadores.bonus_base + gratificacion + prima; 
 	}
 		
 	
